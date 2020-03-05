@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTierApp.DAL
+namespace NTierApp.BLL.Interfaces
 {
-    public class Class1
+    public interface ICompanyService
     {
     }
 }
