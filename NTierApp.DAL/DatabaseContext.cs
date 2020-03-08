@@ -7,9 +7,9 @@ namespace NTierApp.DAL
     {
         static DatabaseContext()
         {
-            Database.SetInitializer<DatabaseContext>(new ContextInitializer());
+            //Database.SetInitializer<DatabaseContext>(new ContextInitializer());
         }
-        public DatabaseContext() : base("Data Source=LAPTOP-8SL0NURC;Initial Catalog=NTireApp;Integrated Security=True")
+        public DatabaseContext() : base("Data Source=LAPTOP-8SL0NURC;Initial Catalog=NTireApp;User Id=root; Password=root;")
         {
 
         }
