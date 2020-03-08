@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NTierApp.BLL
 {
-    class Automapper
+    public class Automapper
     {
         private static Mapper mapper;
         public static Mapper GetMapper()
