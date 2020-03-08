@@ -22,14 +22,14 @@ namespace NTierApp.DAL.Repositories
             db.Employees.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             var employee = db.Employees.FirstOrDefault(e => e.Id == id);
             if (employee != null)
                 db.Employees.Remove(employee);
         }
 
-        public Employee Get(int id)
+        public Employee Get(long id)
         {
             return db.Employees.FirstOrDefault(e => e.Id == id);
         }

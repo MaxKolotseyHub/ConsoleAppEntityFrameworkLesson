@@ -12,7 +12,7 @@ namespace NTierApp.BLL.Interfaces
         void AddCompany(CompanyBLL company);
         ICollection<CompanyBLL> GetCompanies();
         CompanyBLL GetCompany(long id);
-        void DeleteCompany(CompanyBLL company);
+        void DeleteCompany(long id);
 
     }
 }

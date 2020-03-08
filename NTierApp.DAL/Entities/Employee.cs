@@ -10,12 +10,12 @@ namespace NTierApp.DAL.Entities
     {
         public Employee()
         {
-            Companies = new List<Company>();
+            Companies = new List<Company>();    
         }
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-        public ICollection<Company> Companies { get; set; }
+        public virtual ICollection<Company> Companies { get; set; }
     }
 }

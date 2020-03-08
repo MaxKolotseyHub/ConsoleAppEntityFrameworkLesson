@@ -29,9 +29,10 @@ namespace NTierApp.BLL.Services
             unitOfWork.Save();
         }
 
-        public void DeleteCompany(CompanyBLL company)
+        public void DeleteCompany(long id)
         {
-            throw new NotImplementedException();
+            unitOfWork.Companies.Delete(id);
+            unitOfWork.Save();
         }
 
         public void Dispose()
@@ -46,7 +47,10 @@ namespace NTierApp.BLL.Services
 
         public CompanyBLL GetCompany(long id)
         {
-            throw new NotImplementedException();
+            var comp = unitOfWork.Companies.Get(id);
+            if (comp != null)
+                return mapper.Map<CompanyBLL>(comp);
+            else return null;
         }
     }
 }

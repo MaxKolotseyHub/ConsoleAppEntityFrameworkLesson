@@ -9,9 +9,9 @@ namespace NTierApp.DAL.Interfaces
     public interface IRepository<T> where T: class //ограничение на обобщенный тип, т.е. обобщенным типом м.б. только класс
     {
         IEnumerable<T> GetAll();
-        T Get(int id);
+        T Get(long id);
         void Create(T item);
         void Update(T item);
-        void Delete(int id);
+        void Delete(long id);
     }
 }

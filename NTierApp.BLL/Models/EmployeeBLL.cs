@@ -8,6 +8,10 @@ namespace NTierApp.BLL.Models
 {
     public class EmployeeBLL
     {
+        public EmployeeBLL()
+        {
+            Companies = new List<CompanyBLL>();
+        }
         public long Id { get; set; }
         public string FullName { get; set; }
         public int Age { get; set; }

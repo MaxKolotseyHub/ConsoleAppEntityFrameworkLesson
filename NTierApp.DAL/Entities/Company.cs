@@ -15,6 +15,6 @@ namespace NTierApp.DAL.Entities
         public long Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

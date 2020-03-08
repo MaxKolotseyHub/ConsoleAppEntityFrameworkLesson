@@ -1,5 +1,8 @@
-﻿using NTierApp.BLL.Interfaces;
+﻿using AutoMapper;
+using NTierApp.BLL.Interfaces;
 using NTierApp.BLL.Models;
+using NTierApp.DAL.Entities;
+using NTierApp.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +13,43 @@ namespace NTierApp.BLL.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        public void AddEmployee(EmployeeBLL employee)
+        private readonly IUnitOfWork unitOfWork;
+        private readonly Mapper mapper;
+        public EmployeeService(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            this.unitOfWork = unitOfWork;
+            mapper = Automapper.GetMapper();
         }
 
-        public void DeleteEmployee(EmployeeBLL employee)
+        public void AddEmployee(EmployeeBLL employee)
         {
-            throw new NotImplementedException();
+            var empl = mapper.Map<Employee>(employee);
+            unitOfWork.Employees.Create(empl);
+            unitOfWork.Save();
+        }
+
+        public void DeleteEmployee(long id)
+        {
+            unitOfWork.Employees.Delete(id);
+            unitOfWork.Save();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            unitOfWork.Dispose();
         }
 
         public EmployeeBLL GetEmployee(long id)
         {
-            throw new NotImplementedException();
+            var empl = unitOfWork.Employees.Get(id);
+            if (empl != null)
+                return mapper.Map<EmployeeBLL>(empl);
+            else return null;
         }
 
         public ICollection<EmployeeBLL> GetEmployees()
         {
-            throw new NotImplementedException();
+            return mapper.Map<List<EmployeeBLL>>(unitOfWork.Employees.GetAll());
         }
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace NTierApp.BLL.Interfaces
 {
-    interface IEmployeeService:IDisposable
+    public interface IEmployeeService:IDisposable
     {
         void AddEmployee(EmployeeBLL employee);
         ICollection<EmployeeBLL> GetEmployees();
         EmployeeBLL GetEmployee(long id);
-        void DeleteEmployee(EmployeeBLL employee);
+        void DeleteEmployee(long id);
     }
 }

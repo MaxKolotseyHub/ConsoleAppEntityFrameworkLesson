@@ -15,18 +15,19 @@ namespace NTierApp.APConsole
     {
         static void Main(string[] args)
         {
-            var company = new CompanyBLL();
-            Console.WriteLine("Введите название комании");
-            company.CompanyName = Console.ReadLine();
+            //var company = new CompanyBLL();
+            //Console.WriteLine("Введите название комании");
+            //company.CompanyName = Console.ReadLine();
 
-            Console.WriteLine("Введите адрес комании");
-            company.CompanyAddress = Console.ReadLine();
+            //Console.WriteLine("Введите адрес комании");
+            //company.CompanyAddress = Console.ReadLine();
 
             var container = AutofacConfig.ConfigureContainer();
-            var service = container.Resolve(typeof(ICompanyService)) as ICompanyService;
-            service.AddCompany(company);
-            var companies = service.GetCompanies();
-            
+            var companyService = container.Resolve(typeof(ICompanyService)) as ICompanyService;
+            var employeeSrvice = container.Resolve(typeof(IEmployeeService)) as IEmployeeService;
+            //service.AddCompany(company);
+            var companies = companyService.GetCompanies();
+            var employees = employeeSrvice.GetEmployees();
         }
 
     }

@@ -22,14 +22,14 @@ namespace NTierApp.DAL.Repositories
             db.Companies.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             var company = db.Companies.FirstOrDefault(c => c.Id == id);
             if (company != null)
                 db.Companies.Remove(company);
         }
 
-        public Company Get(int id)
+        public Company Get(long id)
         {
             return db.Companies.FirstOrDefault(c => c.Id == id);
         }
