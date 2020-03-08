@@ -31,17 +31,19 @@ namespace NTierApp.DAL.Repositories
 
         public Company Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Companies.FirstOrDefault(c => c.Id == id);
         }
 
         public IEnumerable<Company> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Companies.ToList();
         }
 
         public void Update(Company item)
         {
-            throw new NotImplementedException();
+            var company = db.Companies.FirstOrDefault(c => c.Id == item.Id);
+            if (company != null)
+                company = item;
         }
     }
 }

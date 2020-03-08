@@ -19,27 +19,31 @@ namespace NTierApp.DAL.Repositories
 
         public void Create(Employee item)
         {
-            throw new NotImplementedException();
+            db.Employees.Add(item);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var employee = db.Employees.FirstOrDefault(e => e.Id == id);
+            if (employee != null)
+                db.Employees.Remove(employee);
         }
 
         public Employee Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Employees.FirstOrDefault(e => e.Id == id);
         }
 
         public IEnumerable<Employee> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Employees.ToList();
         }
 
         public void Update(Employee item)
         {
-            throw new NotImplementedException();
+            var employee = db.Employees.FirstOrDefault(e => e.Id == item.Id);
+            if(employee!=null)
+            employee = item;
         }
     }
 }

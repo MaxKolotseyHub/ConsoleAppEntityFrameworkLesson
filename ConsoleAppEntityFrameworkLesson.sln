@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppEntityFrameworkLe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTierApp.DAL", "NTierApp.DAL\NTierApp.DAL.csproj", "{DDD880BD-FC9F-4243-A186-0D88740F741D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTierApp.BLL", "NTierApp.BLL\NTierApp.BLL.csproj", "{B1C2ACCB-4658-46D8-98A6-71DD3A99EB73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTierApp.APConsole", "NTierApp.APConsole\NTierApp.APConsole.csproj", "{485EAE32-E56D-403D-8EA5-862F22CA1B47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DDD880BD-FC9F-4243-A186-0D88740F741D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDD880BD-FC9F-4243-A186-0D88740F741D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDD880BD-FC9F-4243-A186-0D88740F741D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C2ACCB-4658-46D8-98A6-71DD3A99EB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C2ACCB-4658-46D8-98A6-71DD3A99EB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C2ACCB-4658-46D8-98A6-71DD3A99EB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C2ACCB-4658-46D8-98A6-71DD3A99EB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{485EAE32-E56D-403D-8EA5-862F22CA1B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{485EAE32-E56D-403D-8EA5-862F22CA1B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{485EAE32-E56D-403D-8EA5-862F22CA1B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{485EAE32-E56D-403D-8EA5-862F22CA1B47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

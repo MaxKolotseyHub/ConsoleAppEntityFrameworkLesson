@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace NTierApp.DAL
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private DatabaseContext db;
         private EmployeeRepository employeeRepository;
         private CompanyRepository companyRepository;
-        public UnitOfWork(string connectionString)
+        public UnitOfWork()
         {
-            db = new DatabaseContext(connectionString);
+            db = new DatabaseContext();
         }
         public IRepository<Employee> Employees
         {
@@ -38,9 +38,22 @@ namespace NTierApp.DAL
             }
         }
 
+        private bool disposed = false;
+        public virtual void Dispose(bool disposing)
+        {
+            if(!this.disposed)
+            {
+                if(disposing)
+                {
+                    db.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
         public void Dispose()
         {
-
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         public void Save()

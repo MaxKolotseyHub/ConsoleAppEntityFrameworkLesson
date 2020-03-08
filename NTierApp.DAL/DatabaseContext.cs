@@ -1,15 +1,15 @@
 ﻿using NTierApp.DAL.Entities;
 using System.Data.Entity;
 
-namespace NTierApp.DAL.Repositories
+namespace NTierApp.DAL
 {
     public class DatabaseContext: DbContext
     {
         static DatabaseContext()
         {
-            Database.SetInitializer<DatabaseContext>(new ContextInitializer());
+            //Database.SetInitializer<DatabaseContext>(new ContextInitializer());
         }
-        public DatabaseContext(string connectionString) : base(connectionString)
+        public DatabaseContext() : base("Default")
         {
 
         }
