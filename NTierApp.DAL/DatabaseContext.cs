@@ -9,11 +9,10 @@ namespace NTierApp.DAL
         {
             //Database.SetInitializer<DatabaseContext>(new ContextInitializer());
         }
-        public DatabaseContext() : base("Default")
+        public DatabaseContext() : base("Data Source=LAPTOP-8SL0NURC;Initial Catalog=NTireApp;Integrated Security=True")
         {
 
         }
-
         public DbSet<Company> Companies { get; set; }
         public DbSet<Employee> Employees { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
