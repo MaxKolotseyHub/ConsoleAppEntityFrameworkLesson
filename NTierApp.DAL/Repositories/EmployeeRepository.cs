@@ -42,8 +42,15 @@ namespace NTierApp.DAL.Repositories
         public void Update(Employee item)
         {
             var employee = db.Employees.FirstOrDefault(e => e.Id == item.Id);
-            if(employee!=null)
-            employee = item;
+            if (employee != null)
+            {
+                db.Employees.Attach(employee);
+                employee.Age = item.Age;
+                employee.FirstName = item.FirstName;
+                employee.LastName = item.LastName;
+                db.SaveChanges();
+            }
+            //db.Entry(employee).State = System.Data.Entity.EntityState.Modified;
         }
     }
 }

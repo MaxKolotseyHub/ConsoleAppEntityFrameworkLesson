@@ -24,8 +24,17 @@ namespace NTierApp.ASPMVC
                     .ForMember("Name", opt=>opt.MapFrom(c=>c.CompanyName))
                     .ForMember("Address", opt=>opt.MapFrom(c=>c.CompanyAddress));
                     cfg.CreateMap<CompaniesViewModel, CompanyBLL>();
+                    cfg.CreateMap<EditEmployeeViewModel, EmployeeBLL>()
+                    .ForMember("FullName", opt => opt.MapFrom(c => c.FirstName + " " + c.LastName));
+                    
+                    cfg.CreateMap<EmployeeBLL, EditEmployeeViewModel>()
+                    .ForMember("FirstName", opt => opt.MapFrom(c => c.FullName.Split(' ')[0]))
+                    .ForMember("LastName", opt => opt.MapFrom(c => c.FullName.Split(' ')[1]));
                     cfg.CreateMap<EmployeeBLL, EmployeesViewModel>();
                     cfg.CreateMap<EmployeesViewModel, EmployeeBLL>();
+                    cfg.CreateMap<EmployeeBLL, DetailsEmployeeViewModel>();
+                    cfg.CreateMap<DetailsEmployeeViewModel, EmployeeBLL>();
+
                 });
 
                 mapper = new Mapper(config);

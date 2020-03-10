@@ -31,6 +31,7 @@ namespace NTierApp.BLL
                     cfg.CreateMap<CompanyBLL, Company>()
                     .ForMember("Address", opt=>opt.MapFrom(c=>c.CompanyAddress))
                     .ForMember("Name", opt=>opt.MapFrom(c=>c.CompanyName));
+
                 });
 
                 mapper = new Mapper(config);

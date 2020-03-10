@@ -9,25 +9,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using NTierApp.BLL.Models;
 
 namespace NTierApp.ASPMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Mapper mapper;
-        private readonly IContainer container;
-        public HomeController()
+        private readonly IMapper mapper;
+        private readonly IEmployeeService employeeService;
+        private readonly ICompanyService companyService;
+        public HomeController(IEmployeeService employeeService, ICompanyService companyService)
         {
-            container = AutofacConfig.ConfigureContainer("Default");
+            this.employeeService = employeeService;
+            this.companyService = companyService;
             mapper = Automapper.GetMapper();
-
         }
         public ActionResult Index()
         {
-
-            var employeeService = container.Resolve(typeof(IEmployeeService)) as IEmployeeService;
-            var companyService = container.Resolve(typeof(ICompanyService)) as ICompanyService;
-
             ViewBag.EmployeesCount = employeeService.GetEmployees().Count;
             ViewBag.CompaniesCount = companyService.GetCompanies().Count;
 
@@ -36,15 +34,30 @@ namespace NTierApp.ASPMVC.Controllers
 
         public ActionResult Companies()
         {
-            var companyService = container.Resolve(typeof(ICompanyService)) as ICompanyService;
             var companies = mapper.Map<List<CompaniesViewModel>>(companyService.GetCompanies());
             return View(companies);
         }
         public ActionResult Employees()
         {
-            var employeeService = container.Resolve(typeof(IEmployeeService)) as IEmployeeService;
             var employees = mapper.Map<List<EmployeesViewModel>>(employeeService.GetEmployees());
             return View(employees);
+        }
+        [HttpGet]
+        public ActionResult EditEmployee(long id)
+        {
+            var employee = employeeService.GetEmployee(id);
+            return View(mapper.Map<EditEmployeeViewModel>(employee));
+        }
+        [HttpPost]
+        public ActionResult EditEmployee(EditEmployeeViewModel editEmployee)
+        {
+            employeeService.UpdateEmployee(mapper.Map<EmployeeBLL>(editEmployee));
+            return RedirectToAction("Employees");
+        }
+        public ActionResult DetailsEmployee(long id)
+        {
+            var employee = employeeService.GetEmployee(id);
+            return View(mapper.Map<DetailsEmployeeViewModel>(employee));
         }
         public ActionResult About()
         {

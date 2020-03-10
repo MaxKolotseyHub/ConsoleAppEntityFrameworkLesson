@@ -10,6 +10,7 @@ namespace NTierApp.BLL.Interfaces
     public interface IEmployeeService:IDisposable
     {
         void AddEmployee(EmployeeBLL employee);
+        void UpdateEmployee(EmployeeBLL employee);
         ICollection<EmployeeBLL> GetEmployees();
         EmployeeBLL GetEmployee(long id);
         void DeleteEmployee(long id);

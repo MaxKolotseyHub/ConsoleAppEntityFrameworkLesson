@@ -22,12 +22,12 @@ namespace NTierApp.APConsole
             //Console.WriteLine("Введите адрес комании");
             //company.CompanyAddress = Console.ReadLine();
 
-            var container = AutofacConfig.ConfigureContainer();
-            var companyService = container.Resolve(typeof(ICompanyService)) as ICompanyService;
-            var employeeSrvice = container.Resolve(typeof(IEmployeeService)) as IEmployeeService;
-            //service.AddCompany(company);
-            var companies = companyService.GetCompanies();
-            var employees = employeeSrvice.GetEmployees();
+            // AutofacConfig.ConfigureContainer("Default");
+            //var companyService = container.Resolve(typeof(ICompanyService)) as ICompanyService;
+            //var employeeSrvice = container.Resolve(typeof(IEmployeeService)) as IEmployeeService;
+            ////service.AddCompany(company);
+            //var companies = companyService.GetCompanies();
+            //var employees = employeeSrvice.GetEmployees();
         }
 
     }
