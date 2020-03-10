@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using NTierApp.ASPMVC.Models;
+using NTierApp.ASPMVC.Models.Company;
 using NTierApp.BLL.Models;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,14 @@ namespace NTierApp.ASPMVC
                 {
 
                     cfg.CreateMap<CompanyBLL, CompaniesViewModel>()
-                    .ForMember("EmployeesCount", opt=>opt.MapFrom(c=>c.Employees.Count))
-                    .ForMember("Name", opt=>opt.MapFrom(c=>c.CompanyName))
-                    .ForMember("Address", opt=>opt.MapFrom(c=>c.CompanyAddress));
+                    .ForMember("EmployeesCount", opt => opt.MapFrom(c => c.Employees.Count));
                     cfg.CreateMap<CompaniesViewModel, CompanyBLL>();
                     cfg.CreateMap<EditEmployeeViewModel, EmployeeBLL>()
                     .ForMember("FullName", opt => opt.MapFrom(c => c.FirstName + " " + c.LastName));
-                    
+
+                    cfg.CreateMap<CompanyBLL, EditCompanyViewModel>();
+                    cfg.CreateMap<EditCompanyViewModel, CompanyBLL>();
+
                     cfg.CreateMap<EmployeeBLL, EditEmployeeViewModel>()
                     .ForMember("FirstName", opt => opt.MapFrom(c => c.FullName.Split(' ')[0]))
                     .ForMember("LastName", opt => opt.MapFrom(c => c.FullName.Split(' ')[1]));

@@ -12,8 +12,8 @@ namespace NTierApp.ASPMVC.Models
         [Display(Name = "Количество работников")]
         public int EmployeesCount { get; set; }
         [Display(Name = "Название компании")]
-        public string Name { get; set; }
+        public string CompanyName { get; set; }
         [Display(Name = "Адрес")]
-        public string Address { get; set; }
+        public string CompanyAddress { get; set; }
     }
 }

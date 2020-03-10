@@ -10,6 +10,7 @@ namespace NTierApp.BLL.Interfaces
     public interface ICompanyService:IDisposable
     {
         void AddCompany(CompanyBLL company);
+        void Update(CompanyBLL company);
         ICollection<CompanyBLL> GetCompanies();
         CompanyBLL GetCompany(long id);
         void DeleteCompany(long id);

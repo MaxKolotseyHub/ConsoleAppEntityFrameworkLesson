@@ -55,6 +55,7 @@ namespace NTierApp.BLL.Services
         public void UpdateEmployee(EmployeeBLL employee)
         {
             unitOfWork.Employees.Update(mapper.Map<Employee>(employee));
+            unitOfWork.Save();
         }
     }
 }

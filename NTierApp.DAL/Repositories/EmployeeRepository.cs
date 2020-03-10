@@ -48,9 +48,7 @@ namespace NTierApp.DAL.Repositories
                 employee.Age = item.Age;
                 employee.FirstName = item.FirstName;
                 employee.LastName = item.LastName;
-                db.SaveChanges();
             }
-            //db.Entry(employee).State = System.Data.Entity.EntityState.Modified;
         }
     }
 }

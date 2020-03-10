@@ -43,7 +43,11 @@ namespace NTierApp.DAL.Repositories
         {
             var company = db.Companies.FirstOrDefault(c => c.Id == item.Id);
             if (company != null)
-                company = item;
+            {
+                db.Companies.Attach(company);
+                company.Address = item.Address;
+                company.Name = item.Name;
+            }
         }
     }
 }

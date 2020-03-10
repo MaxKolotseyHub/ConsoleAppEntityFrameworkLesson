@@ -52,5 +52,11 @@ namespace NTierApp.BLL.Services
                 return mapper.Map<CompanyBLL>(comp);
             else return null;
         }
+
+        public void Update(CompanyBLL company)
+        {
+            unitOfWork.Companies.Update( mapper.Map<Company>(company));
+            unitOfWork.Save();
+        }
     }
 }
