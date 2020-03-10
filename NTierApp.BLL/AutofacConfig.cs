@@ -13,10 +13,10 @@ namespace NTierApp.BLL
 {
     public class AutofacConfig
     {
-        public static IContainer ConfigureContainer()
+        public static IContainer ConfigureContainer(string conntectionString)
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().WithParameter("conntectionString", conntectionString);
             builder.RegisterType<CompanyService>().As<ICompanyService>();
             builder.RegisterType<EmployeeService>().As<IEmployeeService>();
             return builder.Build();

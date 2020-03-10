@@ -24,6 +24,8 @@ namespace NTierApp.ASPMVC
                     .ForMember("Name", opt=>opt.MapFrom(c=>c.CompanyName))
                     .ForMember("Address", opt=>opt.MapFrom(c=>c.CompanyAddress));
                     cfg.CreateMap<CompaniesViewModel, CompanyBLL>();
+                    cfg.CreateMap<EmployeeBLL, EmployeesViewModel>();
+                    cfg.CreateMap<EmployeesViewModel, EmployeeBLL>();
                 });
 
                 mapper = new Mapper(config);

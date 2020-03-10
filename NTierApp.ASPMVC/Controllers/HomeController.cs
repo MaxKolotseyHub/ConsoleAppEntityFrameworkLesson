@@ -18,7 +18,7 @@ namespace NTierApp.ASPMVC.Controllers
         private readonly IContainer container;
         public HomeController()
         {
-            container = AutofacConfig.ConfigureContainer();
+            container = AutofacConfig.ConfigureContainer("Default");
             mapper = Automapper.GetMapper();
 
         }
@@ -39,6 +39,12 @@ namespace NTierApp.ASPMVC.Controllers
             var companyService = container.Resolve(typeof(ICompanyService)) as ICompanyService;
             var companies = mapper.Map<List<CompaniesViewModel>>(companyService.GetCompanies());
             return View(companies);
+        }
+        public ActionResult Employees()
+        {
+            var employeeService = container.Resolve(typeof(IEmployeeService)) as IEmployeeService;
+            var employees = mapper.Map<List<EmployeesViewModel>>(employeeService.GetEmployees());
+            return View(employees);
         }
         public ActionResult About()
         {

@@ -14,9 +14,9 @@ namespace NTierApp.DAL
         private DatabaseContext db;
         private EmployeeRepository employeeRepository;
         private CompanyRepository companyRepository;
-        public UnitOfWork()
+        public UnitOfWork(string conntectionString)
         {
-            db = new DatabaseContext();
+            db = new DatabaseContext(conntectionString);
         }
         public IRepository<Employee> Employees
         {
