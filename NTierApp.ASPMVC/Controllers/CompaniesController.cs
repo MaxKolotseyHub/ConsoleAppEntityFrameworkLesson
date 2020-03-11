@@ -42,5 +42,28 @@ namespace NTierApp.ASPMVC.Controllers
             companyService.Update(mapper.Map<CompanyBLL>(edited));
             return RedirectToAction("Index");
         }
+        public ActionResult Details(long id)
+        {
+            var company = companyService.GetCompany(id);
+            if (company != null)
+                return View(mapper.Map<DetailsCompanyViewModel>(company));
+            else return new HttpNotFoundResult();
+        }
+        public ActionResult Delete(long id)
+        {
+            companyService.DeleteCompany(id);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(CreateCompanyViewModel model)
+        {
+            companyService.AddCompany(mapper.Map<CompanyBLL>(model));
+            return RedirectToAction("Index");
+        }
     }
 }

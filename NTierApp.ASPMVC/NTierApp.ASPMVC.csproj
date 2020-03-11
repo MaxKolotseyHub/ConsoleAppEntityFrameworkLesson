@@ -147,12 +147,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Automapper.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Company\CompaniesViewModel.cs" />
+    <Compile Include="Models\Company\CreateCompanyViewModel.cs" />
+    <Compile Include="Models\Company\DetailsCompanyViewModel.cs" />
     <Compile Include="Models\Company\EditCompanyViewModel.cs" />
+    <Compile Include="Models\Employee\CreateEmployeeViewModel.cs" />
     <Compile Include="Models\Employee\DetailsEmployeeViewModel.cs" />
     <Compile Include="Models\Employee\EditEmployeeViewModel.cs" />
     <Compile Include="Models\Employee\EmployeesViewModel.cs" />
@@ -205,9 +209,12 @@
     <Content Include="Views\Home\DetailsEmployee.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
     <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Employees\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

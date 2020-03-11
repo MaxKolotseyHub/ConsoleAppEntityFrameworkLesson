@@ -23,17 +23,25 @@ namespace NTierApp.ASPMVC
                     cfg.CreateMap<CompanyBLL, CompaniesViewModel>()
                     .ForMember("EmployeesCount", opt => opt.MapFrom(c => c.Employees.Count));
                     cfg.CreateMap<CompaniesViewModel, CompanyBLL>();
+
                     cfg.CreateMap<EditEmployeeViewModel, EmployeeBLL>()
                     .ForMember("FullName", opt => opt.MapFrom(c => c.FirstName + " " + c.LastName));
 
                     cfg.CreateMap<CompanyBLL, EditCompanyViewModel>();
                     cfg.CreateMap<EditCompanyViewModel, CompanyBLL>();
 
+                    cfg.CreateMap<CreateCompanyViewModel, CompanyBLL>();
+                    cfg.CreateMap<CompanyBLL, CreateCompanyViewModel>();
+
+                    cfg.CreateMap<DetailsCompanyViewModel, CompanyBLL>();
+                    cfg.CreateMap<CompanyBLL, DetailsCompanyViewModel>();
+
                     cfg.CreateMap<EmployeeBLL, EditEmployeeViewModel>()
                     .ForMember("FirstName", opt => opt.MapFrom(c => c.FullName.Split(' ')[0]))
                     .ForMember("LastName", opt => opt.MapFrom(c => c.FullName.Split(' ')[1]));
                     cfg.CreateMap<EmployeeBLL, EmployeesViewModel>();
                     cfg.CreateMap<EmployeesViewModel, EmployeeBLL>();
+
                     cfg.CreateMap<EmployeeBLL, DetailsEmployeeViewModel>();
                     cfg.CreateMap<DetailsEmployeeViewModel, EmployeeBLL>();
 

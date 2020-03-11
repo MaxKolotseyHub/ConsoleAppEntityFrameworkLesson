@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace NTierApp.ASPMVC.Models
+namespace NTierApp.ASPMVC.Models.Employee
 {
-    public class EditEmployeeViewModel
+    public class CreateEmployeeViewModel
     {
-        public long Id { get; set; }
         [Display(Name = "Имя")]
         public string FirstName { get; set; }
         [Display(Name = "Фамилия")]
