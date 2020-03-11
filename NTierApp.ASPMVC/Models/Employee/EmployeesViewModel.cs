@@ -13,5 +13,7 @@ namespace NTierApp.ASPMVC.Models
         public string FullName { get; set; }
         [Display(Name = "Возраст")]
         public int Age { get; set; }
+        [Display(Name = "Количество компаний")]
+        public int CompaniesCount { get; set; }
     }
 }

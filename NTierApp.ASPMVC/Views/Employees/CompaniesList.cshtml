@@ -1,0 +1,60 @@
+﻿@model NTierApp.ASPMVC.Models.DetailsEmployeeViewModel
+
+@{
+    ViewBag.Title = "CompaniesList";
+}
+
+@helper CompaniesListAdd(IEnumerable<NTierApp.ASPMVC.Models.Company.EditCompanyViewModel> companies)
+{
+
+}
+
+<h2>CompaniesList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th></th>
+    </tr>
+
+   
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Age)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+            </td>
+        </tr>
+    
+
+    @foreach (var company in ViewBag.CompaniesList)
+    {
+
+        @Html.BeginForm("CompaniesList","Employees",FormMethod.Post)
+        {   
+            <p>
+                <div class="form-group">
+
+                    @Html.Hidden("UserId", Model.Id);
+                    <input name="CompanyId" type="hidden" value=@company.Id />
+                    <div class="col-md-10">@company.CompanyName</div>
+                    <button class="btn active" type="submit">Добавить</button>
+                </div>
+            </p>
+        }
+    }
+</table>

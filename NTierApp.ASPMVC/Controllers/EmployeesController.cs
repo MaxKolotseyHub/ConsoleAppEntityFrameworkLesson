@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using NTierApp.ASPMVC.Models;
+using NTierApp.ASPMVC.Models.Company;
 using NTierApp.ASPMVC.Models.Employee;
 using NTierApp.BLL.Interfaces;
 using NTierApp.BLL.Models;
@@ -14,10 +15,13 @@ namespace NTierApp.ASPMVC.Controllers
     public class EmployeesController : Controller
     {
         private readonly IEmployeeService employeeService;
+        private readonly ICompanyService companyService;
         private readonly IMapper mapper;
-        public EmployeesController(IEmployeeService employeeService)
+
+        public EmployeesController(IEmployeeService employeeService, ICompanyService companyService)
         {
             this.employeeService = employeeService;
+            this.companyService = companyService;
             mapper = Automapper.GetMapper();
         }
 
@@ -61,6 +65,31 @@ namespace NTierApp.ASPMVC.Controllers
         public ActionResult Create(CreateEmployeeViewModel employee)
         {
             employeeService.AddEmployee(mapper.Map<EmployeeBLL>(employee));
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult CompaniesList(long id)
+        {
+            var employee = mapper.Map<DetailsEmployeeViewModel>(employeeService.GetEmployee(id));
+            var companies= mapper.Map<List<EditCompanyViewModel>>(companyService.GetCompanies());
+
+            List<EditCompanyViewModel> free = new List<EditCompanyViewModel>();
+            companies.ForEach(c=> {
+                if (employee.Companies.FirstOrDefault(e => e.Id == c.Id) == null)
+                    free.Add(c);
+            });
+
+            ViewBag.CompaniesList = free;
+
+            return View(employee);
+        }
+        [HttpPost]
+        public ActionResult CompaniesList(AddCompanyToUserViewModel item)
+        {
+            var employee = employeeService.GetEmployee(item.UserId);
+            var company = companyService.GetCompany(item.CompanyId);
+            employee.Companies.Add(company);
+            employeeService.UpdateEmployee(employee);
             return RedirectToAction("Index");
         }
     }

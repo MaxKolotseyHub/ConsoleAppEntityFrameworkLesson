@@ -152,6 +152,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Company\AddCompanyToUserViewModel.cs" />
     <Compile Include="Models\Company\CompaniesViewModel.cs" />
     <Compile Include="Models\Company\CreateCompanyViewModel.cs" />
     <Compile Include="Models\Company\DetailsCompanyViewModel.cs" />
@@ -215,6 +216,7 @@
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\CompaniesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
