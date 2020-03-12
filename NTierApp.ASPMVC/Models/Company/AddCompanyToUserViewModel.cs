@@ -7,7 +7,7 @@ namespace NTierApp.ASPMVC.Models.Company
 {
     public class AddCompanyToUserViewModel
     {
-        public long UserId { get; set; }
-        public long CompanyId { get; set; }
+        public int UserId { get; set; }
+        public int CompanyId { get; set; }
     }
 }

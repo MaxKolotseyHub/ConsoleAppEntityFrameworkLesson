@@ -86,10 +86,7 @@ namespace NTierApp.ASPMVC.Controllers
         [HttpPost]
         public ActionResult CompaniesList(AddCompanyToUserViewModel item)
         {
-            var employee = employeeService.GetEmployee(item.UserId);
-            var company = companyService.GetCompany(item.CompanyId);
-            employee.Companies.Add(company);
-            employeeService.UpdateEmployee(employee);
+            employeeService.AddCompany(item.CompanyId, item.UserId);
             return RedirectToAction("Index");
         }
     }

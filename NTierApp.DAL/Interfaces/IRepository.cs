@@ -13,5 +13,6 @@ namespace NTierApp.DAL.Interfaces
         void Create(T item);
         void Update(T item);
         void Delete(long id);
+        void Add(int employeeId, int companyId);
     }
 }

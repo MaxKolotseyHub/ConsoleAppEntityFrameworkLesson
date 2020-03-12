@@ -17,6 +17,11 @@ namespace NTierApp.DAL.Repositories
             this.db = db;
         }
 
+        public void Add(int employeeId, int companyId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(Company item)
         {
             db.Companies.Add(item);
@@ -44,9 +49,11 @@ namespace NTierApp.DAL.Repositories
             var company = db.Companies.FirstOrDefault(c => c.Id == item.Id);
             if (company != null)
             {
-                db.Companies.Attach(company);
                 company.Address = item.Address;
                 company.Name = item.Name;
+                company.Employees = item.Employees;
+                db.Entry(company).State = System.Data.Entity.EntityState.Modified;
+
             }
         }
     }

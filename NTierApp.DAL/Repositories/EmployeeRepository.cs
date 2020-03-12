@@ -48,13 +48,19 @@ namespace NTierApp.DAL.Repositories
                 employee.Age = item.Age;
                 employee.FirstName = item.FirstName;
                 employee.LastName = item.LastName;
-                //if (item.Companies.Count != 0)
-                //    foreach (var company in item.Companies)
-                //    {
-                //        if (employee.Companies.FirstOrDefault(c=>c.Id == company.Id) != null)
-                //            employee.Companies.Add(company);
-                //    }
-                employee = item;
+            }
+        }
+        public void Add(int employeeId, int companyId)
+        {
+            var employee = db.Employees.FirstOrDefault(x => x.Id == employeeId);
+            if (employee != null)
+            {
+                db.Employees.Attach(employee);
+                var company = db.Companies.FirstOrDefault(x => x.Id == companyId);
+                if(company!=null)
+                {
+                    employee.Companies.Add(company);
+                }
             }
         }
     }

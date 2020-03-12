@@ -21,6 +21,12 @@ namespace NTierApp.BLL.Services
             mapper = Automapper.GetMapper();
         }
 
+        public void AddCompany(int companyId, int employeeId)
+        {
+            unitOfWork.Employees.Add(employeeId,companyId);
+            unitOfWork.Save();
+        }
+
         public void AddEmployee(EmployeeBLL employee)
         {
             var empl = mapper.Map<Employee>(employee);
@@ -50,6 +56,11 @@ namespace NTierApp.BLL.Services
         public ICollection<EmployeeBLL> GetEmployees()
         {
             return mapper.Map<List<EmployeeBLL>>(unitOfWork.Employees.GetAll());
+        }
+
+        public void Save()
+        {
+            unitOfWork.Save();
         }
 
         public void UpdateEmployee(EmployeeBLL employee)

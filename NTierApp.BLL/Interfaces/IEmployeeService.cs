@@ -11,6 +11,8 @@ namespace NTierApp.BLL.Interfaces
     {
         void AddEmployee(EmployeeBLL employee);
         void UpdateEmployee(EmployeeBLL employee);
+        void AddCompany(int companyId, int employeeId);
+        void Save();
         ICollection<EmployeeBLL> GetEmployees();
         EmployeeBLL GetEmployee(long id);
         void DeleteEmployee(long id);
