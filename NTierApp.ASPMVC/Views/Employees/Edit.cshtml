@@ -7,10 +7,10 @@
 <h2>Редактирование</h2>
 
 
-@using (Html.BeginForm("Edit","Employees",FormMethod.Post))
+@using (Html.BeginForm("Edit", "Employees", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Редактирование информации о работнике</h4>
         <hr />
@@ -48,7 +48,43 @@
         </div>
     </div>
 }
+@Html.Label(Model.FirstName + " может стать работником у:")
+<div class="table-hover">
+    @foreach (var company in ViewBag.FreeCompaniesList)
+    {
+        <form method="post" action="/Employees/CompaniesList">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-1" style="margin-bottom:5px">
+                        <input type="hidden" value="@company.Id" name="CompanyId" />
+                        <input type="hidden" value="@Model.Id" name="UserId" />
+                        <label>@company.CompanyName</label>
+                    </div>
+                    <div class="col" style="margin-bottom:5px">
+                        <button class="btn active" type="submit">Добавить</button>
+                    </div>
+                </div>
+        </form>
+    }
+</div>
+<div>
+    @Html.Label(Model.FirstName + " состоит в данных компаниях:")
 
+    @foreach (var company in ViewBag.JoinedCompaniesList)
+    {
+        <form method="post" action="/Employees/CompaniesListDelete">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1" style="margin-bottom:5px">
+                    <input type="hidden" value="@company.Id" name="CompanyId" />
+                    <input type="hidden" value="@Model.Id" name="UserId" />
+                    <label>@company.CompanyName</label>
+                </div>
+                <div class="col" style="margin-bottom:5px">
+                    <button class="btn active" type="submit">Удалить</button>
+                </div>
+            </div>
+        </form>
+    }
+</div>
 <div>
     @Html.ActionLink("Назад", "Index")
 </div>

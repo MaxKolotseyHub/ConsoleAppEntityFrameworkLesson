@@ -17,7 +17,7 @@ namespace NTierApp.DAL.Repositories
             this.db = db;
         }
 
-        public void Add(int employeeId, int companyId)
+        public void Add(long employeeId, long companyId)
         {
             throw new NotImplementedException();
         }
@@ -32,6 +32,11 @@ namespace NTierApp.DAL.Repositories
             var company = db.Companies.FirstOrDefault(c => c.Id == id);
             if (company != null)
                 db.Companies.Remove(company);
+        }
+
+        public void DeleteInner(long employeeId, long companyId)
+        {
+            throw new NotImplementedException();
         }
 
         public Company Get(long id)

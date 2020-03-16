@@ -34,6 +34,11 @@ namespace NTierApp.ASPMVC.Controllers
         public ActionResult Edit(long id)
         {
             var employee = employeeService.GetEmployee(id);
+            var companies = companyService.GetCompanies();
+            var skipped = mapper.Map<List<EditCompanyViewModel>>(companies.Where(x => employee.Companies.FirstOrDefault(c => c.Id == x.Id) == null));
+            ViewBag.FreeCompaniesList = skipped;
+            ViewBag.JoinedCompaniesList = employee.Companies;
+
             if (employee != null)
                 return View(mapper.Map<EditEmployeeViewModel>(employee));
             else return new HttpNotFoundResult();
@@ -67,27 +72,18 @@ namespace NTierApp.ASPMVC.Controllers
             employeeService.AddEmployee(mapper.Map<EmployeeBLL>(employee));
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public ActionResult CompaniesList(long id)
-        {
-            var employee = mapper.Map<DetailsEmployeeViewModel>(employeeService.GetEmployee(id));
-            var companies= mapper.Map<List<EditCompanyViewModel>>(companyService.GetCompanies());
-
-            List<EditCompanyViewModel> free = new List<EditCompanyViewModel>();
-            companies.ForEach(c=> {
-                if (employee.Companies.FirstOrDefault(e => e.Id == c.Id) == null)
-                    free.Add(c);
-            });
-
-            ViewBag.CompaniesList = free;
-
-            return View(employee);
-        }
+       
         [HttpPost]
         public ActionResult CompaniesList(AddCompanyToUserViewModel item)
         {
             employeeService.AddCompany(item.CompanyId, item.UserId);
-            return RedirectToAction("Index");
+            return RedirectToAction("Edit", new { id=item.UserId });
+        }
+        [HttpPost]
+        public ActionResult CompaniesListDelete(AddCompanyToUserViewModel item)
+        {
+            employeeService.DeleteCompany(item.CompanyId, item.UserId);
+            return RedirectToAction("Edit", new { id = item.UserId });
         }
     }
 }

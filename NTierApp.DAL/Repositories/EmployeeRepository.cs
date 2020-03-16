@@ -50,7 +50,7 @@ namespace NTierApp.DAL.Repositories
                 employee.LastName = item.LastName;
             }
         }
-        public void Add(int employeeId, int companyId)
+        public void Add(long employeeId, long companyId)
         {
             var employee = db.Employees.FirstOrDefault(x => x.Id == employeeId);
             if (employee != null)
@@ -60,6 +60,20 @@ namespace NTierApp.DAL.Repositories
                 if(company!=null)
                 {
                     employee.Companies.Add(company);
+                }
+            }
+        }
+
+        public void DeleteInner(long employeeId, long companyId)
+        {
+            var employee = db.Employees.FirstOrDefault(x => x.Id == employeeId);
+            if (employee != null)
+            {
+                db.Employees.Attach(employee);
+                var company = db.Companies.FirstOrDefault(x => x.Id == companyId);
+                if (company != null)
+                {
+                    employee.Companies.Remove(company);
                 }
             }
         }
