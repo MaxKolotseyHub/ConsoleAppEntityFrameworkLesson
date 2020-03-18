@@ -23,7 +23,7 @@ namespace NTierApp.BLL.Services
 
         public void AddCompany(long companyId, long employeeId)
         {
-            unitOfWork.Employees.Add(employeeId,companyId);
+            unitOfWork.Employees.AddCompany(employeeId,companyId);
             unitOfWork.Save();
         }
 
@@ -36,7 +36,7 @@ namespace NTierApp.BLL.Services
 
         public void DeleteCompany(long companyId, long employeeId)
         {
-            unitOfWork.Employees.DeleteInner(employeeId, companyId);
+            unitOfWork.Employees.DeleteCompany(employeeId, companyId);
             unitOfWork.Save();
         }
 

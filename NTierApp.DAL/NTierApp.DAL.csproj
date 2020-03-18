@@ -69,6 +69,7 @@
     <Compile Include="ContextInitializer.cs" />
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Interfaces\IEmployeeRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

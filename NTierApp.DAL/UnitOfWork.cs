@@ -18,7 +18,7 @@ namespace NTierApp.DAL
         {
             db = new DatabaseContext(conntectionString);
         }
-        public IRepository<Employee> Employees
+        public IEmployeeRepository<Employee> Employees
         {
             get
             {

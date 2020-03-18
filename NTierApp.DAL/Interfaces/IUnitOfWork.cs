@@ -9,8 +9,8 @@ namespace NTierApp.DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable //unit of work предоставляет общий контекст для всех репозиториев
     {
-        IRepository<Employee>Employees { get; }
-        IRepository<Company>Companies { get; }
+        IEmployeeRepository<Employee> Employees { get; }
+        IRepository<Company> Companies { get; }
         void Save();
     }
 }

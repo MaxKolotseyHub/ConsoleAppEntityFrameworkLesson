@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NTierApp.DAL.Repositories
 {
-    public class EmployeeRepository : IRepository<Employee>
+    public class EmployeeRepository : IEmployeeRepository<Employee>
     {
         private readonly DatabaseContext db;
 
@@ -50,7 +50,7 @@ namespace NTierApp.DAL.Repositories
                 employee.LastName = item.LastName;
             }
         }
-        public void Add(long employeeId, long companyId)
+        public void AddCompany(long employeeId, long companyId)
         {
             var employee = db.Employees.FirstOrDefault(x => x.Id == employeeId);
             if (employee != null)
@@ -64,7 +64,7 @@ namespace NTierApp.DAL.Repositories
             }
         }
 
-        public void DeleteInner(long employeeId, long companyId)
+        public void DeleteCompany(long employeeId, long companyId)
         {
             var employee = db.Employees.FirstOrDefault(x => x.Id == employeeId);
             if (employee != null)

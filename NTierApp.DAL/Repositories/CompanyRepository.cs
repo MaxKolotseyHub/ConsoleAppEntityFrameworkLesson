@@ -11,15 +11,9 @@ namespace NTierApp.DAL.Repositories
     public class CompanyRepository : IRepository<Company>
     {
         private readonly DatabaseContext db;
-
         public CompanyRepository(DatabaseContext db)
         {
             this.db = db;
-        }
-
-        public void Add(long employeeId, long companyId)
-        {
-            throw new NotImplementedException();
         }
 
         public void Create(Company item)
@@ -32,11 +26,6 @@ namespace NTierApp.DAL.Repositories
             var company = db.Companies.FirstOrDefault(c => c.Id == id);
             if (company != null)
                 db.Companies.Remove(company);
-        }
-
-        public void DeleteInner(long employeeId, long companyId)
-        {
-            throw new NotImplementedException();
         }
 
         public Company Get(long id)
